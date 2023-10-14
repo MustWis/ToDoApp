@@ -1,22 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import AddToDoTask from "./Components/AddToDoTask/AddToDoTask";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [DUMMY_DATA, setDUMMY_DATA] = useState([
+    { isChecked: true, taskName: "First" },
+    { isChecked: true, taskName: "Second" },
+    { isChecked: false, taskName: "Third" },
+  ]);
+
+  const AddNewData = (newTaskName) => {
+    // Use the setDUMMY_DATA function to update the state
+    setDUMMY_DATA((prevData) => [
+      { isChecked: false, taskName: newTaskName },
+      ...prevData,
+    ]);
+  };
+
+  useEffect(() => console.log(DUMMY_DATA), [DUMMY_DATA]);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <AddToDoTask data={DUMMY_DATA} AddNewData={AddNewData} />
       </header>
     </div>
   );
