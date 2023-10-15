@@ -21,7 +21,7 @@ const AddToDoTask = (props) => {
           return <Tasks isChecked={task.isChecked} taskName={task.taskName} />;
         })}
       </div>
-      <button onClick={()=>setIsAddingNewTask(false)}>Cancel</button>
+      <button onClick={() => setIsAddingNewTask(false)}>Cancel</button>
     </div>
   );
 };
