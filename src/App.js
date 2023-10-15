@@ -10,6 +10,8 @@ function App() {
     { isChecked: false, taskName: "Third" },
   ]);
 
+  const [isAddingNewTask, setIsAddingNewTask] = useState(false);
+
   const AddNewData = (newTaskName) => {
     // Use the setDUMMY_DATA function to update the state
     setDUMMY_DATA((prevData) => [
@@ -23,7 +25,15 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <AddToDoTask data={DUMMY_DATA} AddNewData={AddNewData} />
+        {isAddingNewTask === true ? (
+          <AddToDoTask
+            data={DUMMY_DATA}
+            AddNewData={AddNewData}
+            setIsAddingNewTask={setIsAddingNewTask}
+          />
+        ) : (
+          <button onClick={() => setIsAddingNewTask(true)}>Add New Task</button>
+        )}
       </header>
     </div>
   );
